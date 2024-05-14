@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Drag And Drop API</title>
+      <link href="style.css" rel="stylesheet" type="text/css" />
+   </head>
+   <body>
+      <header>
+         <nav class="main-nav">
+            <ul>
+               <li>
+                  <a href="./registration-form.html" target="_blank"
+                     >Registration Form</a
+                     >
+               </li>
+               <li>
+                  <a href="./web-storage.html" target="_blank">Web Storage API</a>
+               </li>
+               <li><a href="./text.html" target="_blank">Text</a></li>
+               <li>
+                  <a href="./drag-drop.html" target="_blank">Drag And Drop API</a>
+               </li>
+               <li>
+                  <a href="./responsive-image.html" target="_blank"
+                     >Responsive Image</a
+                     >
+               </li>
+            </ul>
+         </nav>
+      </header>
+      <main class="main-container">
+         <h2>Drag And Drop Image</h2>
+         <div class="drag-wrapper">
+            <div
+               id="getData"
+               ondrop="drop(event)"
+               ondragover="allowDrop(event)"
+               >
+            </div>
+            <div
+               id="getDataOther"
+               ondrop="drop(event)"
+               ondragover="allowDrop(event)"
+               >
+            </div>
+         </div>
+         <img
+            id="dragData"
+            src="./images/team-img.png"
+            draggable="true"
+            ondragstart="drag(event)"
+            width="250"
+            height="200"
+            />
+      </main>
+      <script>
+         function allowDrop(e) {
+           e.preventDefault();
+         }
+         
+         function drag(even) {
+           even.dataTransfer.setData("text", even.target.id);
+         }
+         
+         function drop(even) {
+           even.preventDefault();
+           var fetchData = even.dataTransfer.getData("text");
+           even.target.appendChild(document.getElementById(fetchData));
+         }
+      </script>
+   </body>
+</html>

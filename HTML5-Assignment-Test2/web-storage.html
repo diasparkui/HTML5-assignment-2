@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Registration Form</title>
+      <link href="style.css" rel="stylesheet" type="text/css" />
+   </head>
+   <body>
+      <header>
+         <nav class="main-nav">
+            <ul>
+               <li>
+                  <a href="./registration-form.html" target="_blank"
+                     >Registration Form</a
+                     >
+               </li>
+               <li>
+                  <a href="./web-storage.html" target="_blank">Web Storage API</a>
+               </li>
+               <li><a href="./text.html" target="_blank">Text</a></li>
+               <li>
+                  <a href="./drag-drop.html" target="_blank">Drag And Drop API</a>
+               </li>
+               <li>
+                  <a href="./responsive-image.html" target="_blank"
+                     >Responsive Image</a
+                     >
+               </li>
+            </ul>
+         </nav>
+      </header>
+      <main class="main-container">
+         <h2 style="text-align: center">Web Storage API</h2>
+         <h1>Page Refresh Counter</h1>
+         <p>Refresh this page to see the counter increase:</p>
+         <p>Counter: <span id="counter"></span></p>
+         
+         <script>
+            if (typeof(Storage) !== "undefined") {
+                if (!localStorage.getItem('counter')) {
+                    localStorage.setItem('counter', 0);
+                }
+            
+                var counter = parseInt(localStorage.getItem('counter'));
+                document.getElementById('counter').innerText = counter;
+            
+                window.onload = function() {
+                    counter++;
+                    localStorage.setItem('counter', counter);
+                    document.getElementById('counter').innerText = counter;
+                };
+            } else {
+                document.getElementById('counter').innerText = "Sorry, your browser does not support Web Storage.";
+            }
+             
+            
+         </script>
+      </main>
+   </body>
+</html>
